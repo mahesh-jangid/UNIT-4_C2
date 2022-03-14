@@ -21,26 +21,13 @@ router.post("", async (req, res) => {
     console.log(err);
   }
 });
-
-// router.get("/:user_id", async (req, res) => {
-//   try {
-//     const saving = await Saving.findById(req.params.user_id).lean().exec();
-//     return res.send(saving);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-// router.patch("/:id", async (req, res) => {
-//   try {
-//     const saving = await Saving.findByIdAndUpdate(
-//       req.params.user_id,
-//       req.body,
-//       { new: true }
-//     );
-//     return res.send(saving);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
+router.delete("/:_id", async (req, res) => {
+  try {
+    const master = await Master.findOneAndDelete(req.params._id);
+    return res.send(master);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 module.exports = router;
